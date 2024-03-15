@@ -1,0 +1,14 @@
+[Unit]
+Description=WiFi Packet Sniffer
+After=network.target
+
+[Service]
+Type=simple
+Restart=on-failure
+RestartSec=2
+ExecStart=/usr/local/sbin/sniff
+ExecStartPre=/usr/local/sbin/monitor.sh
+TimeoutStopSec=infinity
+
+[Install]
+WantedBy=multi-user.target

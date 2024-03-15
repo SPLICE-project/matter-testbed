@@ -1,0 +1,14 @@
+[Unit]
+Description=Collect TX/RX statistics from AP bout conn. devices.
+After=network.target
+
+[Service]
+Type=simple
+Restart=on-failure
+RestartSec=2
+ExecStart=/usr/local/sbin/scrape_bytes.py
+ExecStartPre=/bin/sleep 20
+TimeoutStopSec=infinity
+
+[Install]
+WantedBy=multi-user.target

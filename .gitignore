@@ -1,0 +1,20 @@
+# Emacs
+*~
+\#*\#
+.\#*
+
+# Latex files
+*.synctex.gz
+*.aux
+*.log
+*.bbl
+*.blg
+*.bak
+*.out
+
+# MacOS files
+.DS_Store
+Icon?
+._*
+/code/.idea
+.idea
