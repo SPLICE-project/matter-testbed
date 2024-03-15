@@ -1,0 +1,14 @@
+[Unit]
+Description=Cubelet Commissioner
+After=network.target
+
+[Service]
+Type=simple
+Restart=on-failure
+RestartSec=2
+ExecStart=/usr/local/sbin/cubelet-commissioner
+ExecStartPre=/bin/sleep 5
+TimeoutStopSec=infinity
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+package splice_cube;
+
+import "google/protobuf/timestamp.proto";
+
+service SPLICEcubeServer{
+  rpc getPacketsTo(SingleMACAddr) returns (Packets) {}
+  rpc getPacketsFrom(SingleMACAddr) returns (Packets) {}
+  rpc getPacketsFromTo(DoubleMACAddr) returns (Packets) {}
+  rpc getDeviceLastSeen(SingleMACAddr) returns (Time) {}
+  rpc getMUDProfile(SingleMACAddr) returns (MUDProfile) {}
+  rpc getCubeletInfo(SingleMACAddr) returns (CubeletInfo) {}
+  rpc getCubeletLastSeen(SingleMACAddr) returns (Time) {}
+  rpc getDeviceInfo(SingleMACAddr) returns (DeviceInfo) {}
+}
+
+message SingleMACAddr{
+  string mac_address = 1;
+}
+
+message Time{
+  string time = 1;
+}
+
+message MUDProfile{
+  string mud_url = 1;
+}
+
+message DoubleMACAddr{
+  string src_mac = 1;
+  string dst_mac = 2;
+}
+
+message Packets{
+  repeated PacketData packets = 1;
+}
+
+message PacketData{
+  string src_mac = 1;
+  string dst_mac = 2;
+  string src_ip  = 3;
+  string dst_ip  = 4;
+  int32  rssi    = 5;
+  int32  id      = 6;
+  string time    = 7;
+  string notes   = 8;
+}
+
+message CubeletInfo{
+  int32 cubelet_num = 1;
+  string ip_addr    = 2;
+  string mac_addr   = 3;
+  string location   = 4;
+  string time_added = 5;
+  string last_seen  = 6;
+  string hostname   = 7;
+  string notes      = 8;
+}
+
+message DeviceInfo{
+  int32 id         = 1;
+  string name      = 2;
+  string vendor    = 3;
+  string mac_addr  = 4;
+  string ip_addr   = 5;
+  string time_added= 6;
+  string last_seen = 7;
+  string notes     = 8;
+}

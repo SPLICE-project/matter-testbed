@@ -1,0 +1,14 @@
+[Unit]
+Description=UDP and TCP Port Scanner
+After=network.target
+
+[Service]
+Type=simple
+Restart=on-failure
+RestartSec=2
+ExecStart=/usr/local/sbin/port-scan
+ExecStartPre=/bin/sleep 17
+TimeoutStopSec=infinity
+
+[Install]
+WantedBy=multi-user.target
