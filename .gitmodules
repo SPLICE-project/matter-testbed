@@ -1,8 +1,0 @@
-[submodule "matter"]
-	path = matter
-	url = git@github.com:SPLICE-project/MatterInSPLICE.git
-	branch = homecube
-[submodule "homecube"]
-	path = homecube
-	url = git@github.com:SPLICE-project/SPLICEcube.git
-	branch = homecube
