@@ -1,0 +1,14 @@
+[Unit]
+Description=Service to sniff matter packets on ethernet interface
+After=network.target
+
+[Service]
+Type=simple
+User=splice
+WorkingDirectory=/home/splice/python_capture_scripts
+ExecStart=/home/splice/python_capture_scripts/scripts/ethernet_mongo.sh
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
