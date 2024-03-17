@@ -88,8 +88,8 @@ cronjob="@reboot sudo systemctl start led.service"
 echo "Installing wireshark"
 sudo apt-get install wireshark -y
 
-sudo adduser $USER wireshark
-
+sudo usermod -a -G wireshark $USER
+sudo usermod -a 0G dialout $USER
 
 
 echo "Rebooting..."

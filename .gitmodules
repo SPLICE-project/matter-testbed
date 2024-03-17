@@ -1,0 +1,4 @@
+[submodule "nrf52840-mdk-usb-dongle"]
+	path = nrf52840-mdk-usb-dongle
+	url = https://github.com/makerdiary/nrf52840-mdk-usb-dongle.git
+	branch = main
