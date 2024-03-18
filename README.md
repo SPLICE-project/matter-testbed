@@ -14,8 +14,10 @@ The cube acts as the main Wi-Fi access point for the network whilst the cubelet 
 
 For convenince we provide two scripts to assist with the setup of the hub system. There are two scripts which help in setting up the cube and cubelets.
 The setup script for the cube creates the Access Point for the cube whilst the cubelet setup script helps in configuring the hardware and software required to do traffic capture. 
-
+The setup script for the cubelet can be found [here](https://github.com/SPLICE-project/matter-testbed/blob/main/homecube/cubelet_setup.sh) and the cube script can be found [here](https://github.com/SPLICE-project/matter-testbed/blob/main/homecube/cube_setup.sh).
 
 ## Home Assistant Server
+For the smart home platform we use [Home Assistant](https://www.home-assistant.io/). Specifically, we use a version called Home Assistant Supervised running on a Linux/Debian host
+operating system. The setup instructions can be found [here](https://community.home-assistant.io/t/guide-installing-ha-supervised-on-debian-official-distro/555228).
 
 ## Matter Devices
