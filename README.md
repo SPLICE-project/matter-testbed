@@ -12,7 +12,8 @@ The cube acts as the main Wi-Fi access point for the network whilst the cubelet 
 * nRF52840 for BLE Traffic Capture
 * Wi-Fi interface capable of monitor mode for Wi-Fi capture
 
-
+For convenince we provide two scripts to assist with the setup of the hub system. There are two scripts which help in setting up the cube and cubelets.
+The setup script for the cube creates the Access Point for the cube whilst the cubelet setup script helps in configuring the hardware and software required to do traffic capture. 
 
 
 ## Home Assistant Server
