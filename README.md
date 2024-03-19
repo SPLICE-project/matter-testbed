@@ -26,6 +26,8 @@ The database is created in ```/media/splicecube.db```.
 ### Thread & BLE Sniffing
 For flexibility, we use MongoDB to store the Matter traffic which is transmitted over Thread and Wi-Fi. BLE traffic scanning is used to monitor the device during the commissioning process.
 MakerDiary provides a [guide](https://wiki.makerdiary.com/nrf52840-mdk-usb-dongle/guides/nrf802154-sniffer/configuring/#configuring-decryption-keys-for-thread) on configuring setup for Thread & BLE.
+We also provide [scripts](https://github.com/SPLICE-project/matter-testbed/tree/main/matter/scripts) which help with the automatic capture of Matter traffic and storing such traffic in a MongoDB.
+
 ## Home Assistant Server
 For the smart home platform, we use [Home Assistant](https://www.home-assistant.io/). Specifically, we use a version called Home Assistant Supervised running on a Linux/Debian host
 operating system. The setup instructions can be found [here](https://community.home-assistant.io/t/guide-installing-ha-supervised-on-debian-official-distro/555228).
