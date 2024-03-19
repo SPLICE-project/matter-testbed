@@ -12,12 +12,22 @@ The cube acts as the main Wi-Fi access point for the network whilst the cubelet 
 * nRF52840 for BLE Traffic Capture
 * Wi-Fi interface capable of monitor mode for Wi-Fi capture
 
-For convenience we provide two scripts to assist with the setup of the hub system. There are two scripts which help in setting up the cube and cubelets.
-The setup script for the cube creates the Access Point for the cube whilst the cubelet setup script helps in configuring the hardware and software required to do traffic capture. 
+For convenience, we provide two scripts to assist with the setup of the hub system. There are two scripts which help in setting up the cube and cubelets.
+The setup script for the cube creates the Access Point for the cube whilst the cubelet setup script helps to configure the hardware and software required to do traffic capture. 
 The setup script for the cubelet can be found [here](https://github.com/SPLICE-project/matter-testbed/blob/main/homecube/cubelet_setup.sh) and the cube script can be found [here](https://github.com/SPLICE-project/matter-testbed/blob/main/homecube/cube_setup.sh).
 
+### Wi-Fi Sniffing
+The setup script for the cube creates an Access Point for the network,
+the configuration file can be found [here](https://github.com/SPLICE-project/matter-testbed/blob/main/homecube/config/hostapd.conf).
+The sniffing routines are systemd services which capture the traffic and store in a database.
+Sqlite is used to store the captured traffic.
+The database is created in ```/media/splicecube.db```.
+
+### Thread & BLE Sniffing
+For flexibility, we use MongoDB to store the Matter traffic which is transmitted over Thread and Wi-Fi. BLE traffic scanning is used to monitor the device during the commissioning process.
+MakerDiary provides a [guide](https://wiki.makerdiary.com/nrf52840-mdk-usb-dongle/guides/nrf802154-sniffer/configuring/#configuring-decryption-keys-for-thread) on configuring setup for Thread & BLE.
 ## Home Assistant Server
-For the smart home platform we use [Home Assistant](https://www.home-assistant.io/). Specifically, we use a version called Home Assistant Supervised running on a Linux/Debian host
+For the smart home platform, we use [Home Assistant](https://www.home-assistant.io/). Specifically, we use a version called Home Assistant Supervised running on a Linux/Debian host
 operating system. The setup instructions can be found [here](https://community.home-assistant.io/t/guide-installing-ha-supervised-on-debian-official-distro/555228).
 We chose to use Home Assistant supervised since other installations such as Home Assistant OS, whilst easy to install, does not provide a flexible OS layer.
 
@@ -29,4 +39,4 @@ To pair Matter devices to the Home Assistant platform we recommend using the Hom
 The process to establish a Thread network can be found [here](https://www.home-assistant.io/integrations/thread/#turning-home-assistant-into-a-thread-border-router).
 
 ### Pairing Devices
-To pair Matter devices, a mobile phone is used along with the Home Assistant Companion application which is available for iOS & Android. 
+To pair Matter devices, a mobile phone is used along with the Home Assistant Companion application which is available for iOS & Android. At the time of writing this guide, test devices use the same discriminator, therefore, to add multiple virtual/test devices, the discriminator value has to be changed. Details on how to change the discriminator can be found [here](https://github.com/SPLICE-project/matter-testbed/wiki/Virtual-Devices).
