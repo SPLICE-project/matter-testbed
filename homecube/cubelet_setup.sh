@@ -87,9 +87,11 @@ cronjob="@reboot sudo systemctl start led.service"
 
 echo "Installing wireshark"
 sudo apt-get install wireshark -y
+echo "wireshark-common wireshark-common/install-setuid boolean true" | sudo debconf-set-selections
+sudo DEBIAN_FRONTEND=noninteractive dpkg-reconfigure wireshark-common
 
 sudo usermod -a -G wireshark $USER
-sudo usermod -a 0G dialout $USER
+sudo usermod -a -G dialout $USER
 
 
 echo "Rebooting..."
