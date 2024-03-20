@@ -86,13 +86,34 @@ cronjob="@reboot sudo systemctl start led.service"
 
 
 echo "Installing wireshark"
+sudo apt-get install tshark -y
 sudo apt-get install wireshark -y
 echo "wireshark-common wireshark-common/install-setuid boolean true" | sudo debconf-set-selections
 sudo DEBIAN_FRONTEND=noninteractive dpkg-reconfigure wireshark-common
 
+
+mkdir -p ~/.config/wireshark/old
+mv ~/.config/wireshark/* ~/.config/wireshark/old/
+mv ../wireshark/* ~/.config/wireshark/
+
+echo "Configuring wireshark for matter traffic capture."
+cp ../matter/config/ethernet_sniffing.service /etc/systemd/system/
+cp ../matter/config/thread_sniffing.service /etc/systemd/system/
+
+systemctl enable ethernet_sniffing.service
+systemctl start ethernet_sniffing.service
+
+cronjob="@reboot sudo systemctl start ethernet_sniffing.service"
+(crontab -u root -l; echo "$cronjob" ) | crontab -u root -
+
+systemctl enable thread_sniffing.service
+systemctl start thread_sniffing.service
+
+cronjob="@reboot sudo systemctl start thread_sniffing.service"
+(crontab -u root -l; echo "$cronjob" ) | crontab -u root -
+
 sudo usermod -a -G wireshark $USER
 sudo usermod -a -G dialout $USER
-
 
 echo "Rebooting..."
 systemctl reboot
